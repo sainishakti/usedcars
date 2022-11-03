@@ -14,7 +14,7 @@ module.exports.Admin = async (req, res) => {
           address : address,
           password:hashPassword,
           phone:phone,
-          adminProfile:req.file.filename
+          adminProfile:req?.file?.filename
           })
           console.log("data",data);
         if(data){
