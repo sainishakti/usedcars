@@ -17,7 +17,7 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // Load Routes
-require("./router/jobsRouter.js")(app)
+require("./router/authRouter.js")(app)
 require("./router/jobsRouter.js")(app)
 
 app.listen(port, () => {
