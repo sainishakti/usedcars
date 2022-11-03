@@ -1,6 +1,6 @@
 module.exports =app=>{
     const router = require("express").Router()
-    const adminController = require("../controller/adminAdmincontroller.js") 
+    const adminController = require("../controller/adminAuthcontroller.js")
     const {checkUserAuth} = require("../middleware/middleware.js") 
     
     const multer = require("multer")
