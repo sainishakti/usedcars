@@ -20,6 +20,11 @@ module.exports =app=>{
     router.post("/adminlogin",adminController.adminLogin)
     router.use('/Changepasswords', checkUserAuth)
     router.post("/Changepasswords",adminController.changeAdminPassword)
+    router.post("/ForgotPassword",adminController.sendOtpEmail)
+    router.post("/VerifyOtp",adminController.verifyOtp)
+    router.post("/setPassword",checkUserAuth)
+    router.post("/setPassword",adminController.userPasswordReset)
+
     
   
     app.use('/',router)

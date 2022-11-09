@@ -14,7 +14,7 @@ module.exports.checkUserAuth = async (req, res, next) => {
 
       // Get User from Token
       req.users = await AdminModel.findById(userID).select('-password')
-
+      console.log("user",req.users);
       next()
     } catch (error) {
       console.log(error)

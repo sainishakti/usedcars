@@ -8,6 +8,7 @@ const jobsSchema = new mongoose.Schema({
   jobLocation: { type: String},
   experience: { type: String},
   skill: { type: String},
+  
 
   },
 {

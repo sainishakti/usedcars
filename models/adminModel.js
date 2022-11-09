@@ -8,6 +8,7 @@ const adminSchema = new mongoose.Schema({
   address: { type: String},
   password: { type: String},
   adminProfile: { type: String,default:"user.png"},
+  otp: { type: String},
   },
 {
   timestamps:true
