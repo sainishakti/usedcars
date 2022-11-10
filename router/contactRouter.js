@@ -1,7 +1,7 @@
 module.exports =app=>{
     const router = require("express").Router()
     const contactController = require("../controller/contactController.js") 
-
+    const multer = require("multer")
 //add
     var storage = multer.diskStorage({
         destination: function (req, file, cb) {
