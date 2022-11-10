@@ -1,0 +1,32 @@
+module.exports =app=>{
+    const router = require("express").Router()
+    const contactController = require("../controller/contactController.js") 
+
+//add
+    var storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+          cb(null, './upload')
+        },
+        filename: function (req, file, cb) {
+          cb(null, file.originalname)
+        }
+    })
+    var upload = multer({ storage: storage })
+    
+    router.post("/addContact",upload.single('file'),contactController.addContact);
+    //update..........................................
+    var storages = multer.diskStorage({
+        destination: function (req, file, cb) {
+          cb(null, './upload')
+        },
+        filename: function (req, file, cb) {
+          cb(null, file.originalname)
+        }
+    })
+    var upload = multer({ storage: storages })
+    
+    router.post("/updateContact",upload.single('file'),contactController.updateContact);
+    router.post("/deleteContact",contactController.deleteform);
+  
+    app.use('/',router)
+}
