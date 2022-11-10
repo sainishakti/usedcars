@@ -2,9 +2,8 @@ const contactModel =require("../models/conactModel.js")
 //Create Jobs
 module.exports.addContact = async (req, res) => {
     const { name ,email ,phoneNumber , message , subject } = req.body
-
-if ( name && email  && phoneNumber && message &&subject) {
-          try {
+    if ( name && email  && phoneNumber && message && subject) {
+   try {
     const doc = new contactModel({
       name: name,
       email: email,
@@ -24,7 +23,7 @@ if ( name && email  && phoneNumber && message &&subject) {
     }
   //updateContact............................................//
   module.exports.updateContact = async (req, res) => {
-    const { name ,email ,phoneNumber , message , subject } = req.body
+    const { name ,email ,phoneNumber , message , subject ,_id} = req.body
     try{
     const data = await contactModel.findByIdAndUpdate({ _id: _id },
       {
@@ -32,6 +31,7 @@ if ( name && email  && phoneNumber && message &&subject) {
       email: email,
       phoneNumber:phoneNumber,
       message:message,
+      subject:subject,
       image:req?.file?.filename
       })
     if(data){
