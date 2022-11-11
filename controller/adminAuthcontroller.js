@@ -105,13 +105,14 @@ console.log(otp);
       text: ""+otp, 
        };
   
-  // // send mail with defined transport object
+// send mail with defined transport object
    transporter.sendMail(mailOptions, function(error, info){
       if(error){
       console.log(error);
       }else{
         console.log(info);
-        res.send({ "status": "201","success":true, "message": "Otp Send Your mail Successfully",otp })
+        const token = jwt.sign({ userID: user._id }, process.env.JWT_SECRET_KEY, { expiresIn: '5d' })
+        res.send({ "status": "201","success":true, "message": "Otp Send Your mail Successfully",otp,token })
       }
     })
        }
@@ -123,43 +124,50 @@ console.log(otp);
     res.status(401).send({"status": "401","success":false, "message":  "Email Field is Required"  })
   }
   }
-  //verifyOtp
-  module.exports.verifyOtp = async (req, res) => {
-    const {otp,email } = req.body
-    try{
+  //setPassword.....................................................
+  module.exports.setPassword = async (req, res) => {
+    const {otp,email,password,password_confirmation} = req.body
+  try{
     const user = await adminModel.findOne({$and: [{email: email},{otp: otp}]})
-    if(user){
-      const token = jwt.sign({ userID: user._id }, process.env.JWT_SECRET_KEY, { expiresIn: '5d' })
-      res.send({ "status": "201","success":true, "message": "Otp Verify Successfully",token })
-    }else{
-      
-      res.status(401).send({"status": "401","success":false, "message":  " Your Otp  Is Invalid"  })
+    console.log("data",user);
+    if(user==null){
+      res.status(401).send({"status": "401","success":false, "message":  " Your Condition Is Invalid"  })
     }
-  }catch(error){
-    console.log(error);
-     res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong"  })
-  }
-  }
-  //setPassword
-
-  module.exports.userPasswordReset = async (req, res) => {
-    const { password, password_confirmation } = req.body
-    try {
-      if (password && password_confirmation) {
-        if (password !== password_confirmation) {
-          res.status(401).send({"status": "401","success":false, "message":  "New Password and Confirm New Password doesn't match"   })
-        } else {
+    else if(password !== password_confirmation) {
+      res.status(401).send({"status": "401","success":false, "message":  "New Password and Confirm New Password doesn't match"   })
+    }
+    else{
+          const _id = req.body._id
           const salt = await bcrypt.genSalt(10)
           const newHashPassword = await bcrypt.hash(password, salt)
-          await adminModel.findByIdAndUpdate(req.users._id, { $set: { password: newHashPassword } })
+          await adminModel.findByIdAndUpdate({_id:_id}, { $set: { password: newHashPassword } })
           res.send({ "status": "201","success":true, "message": "Password Reset Successfully" })
-        }
-      } else {
-        res.status(401).send({"status": "401","success":false, "message":  "All Fields are Required"})
       }
-    }catch (error){
-     console.log("err...........=>",error)
-      res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" ,error })
-    }
+    }catch(error){
+      res.status(401).send({"status": "401","success":false, "message": "Something went Wrong" })
+}
   }
+  
+  //setPassword
+
+  //module.exports.userPasswordReset = async (req, res) => {
+  //   const { password, password_confirmation } = req.body
+  //   try {
+  //     if (password && password_confirmation) {
+  //       if (password !== password_confirmation) {
+  //         res.status(401).send({"status": "401","success":false, "message":  "New Password and Confirm New Password doesn't match"   })
+  //       } else {
+  //         const salt = await bcrypt.genSalt(10)
+  //         const newHashPassword = await bcrypt.hash(password, salt)
+  //         await adminModel.findByIdAndUpdate(req.users._id, { $set: { password: newHashPassword } })
+  //         res.send({ "status": "201","success":true, "message": "Password Reset Successfully" })
+  //       }
+  //     } else {
+  //       res.status(401).send({"status": "401","success":false, "message":  "All Fields are Required"})
+  //     }
+  //   }catch (error){
+  //    console.log("err...........=>",error)
+  //     res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" ,error })
+  //   }
+  // }
 

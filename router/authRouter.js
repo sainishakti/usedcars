@@ -15,15 +15,13 @@ module.exports =app=>{
         }
     })
     var upload = multer({ storage: storage })
-
     router.post("/updateAdminProfile",upload.single('file'),adminController.Admin)
     router.post("/adminlogin",adminController.adminLogin)
     router.use('/Changepasswords', checkUserAuth)
     router.post("/Changepasswords",adminController.changeAdminPassword)
     router.post("/ForgotPassword",adminController.sendOtpEmail)
-    router.post("/VerifyOtp",adminController.verifyOtp)
     router.post("/setPassword",checkUserAuth)
-    router.post("/setPassword",adminController.userPasswordReset)
+    router.post("/setPassword",adminController.setPassword)
 
     
   
