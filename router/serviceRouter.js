@@ -11,8 +11,13 @@ module.exports =app=>{
         }
     })
     var upload = multer({ storage: storage })
-    router.post("/addsevice",upload.single('file'),serviceController.addServices);
+    router.post("/addservice",upload.single('file'),serviceController.addServices);
+    router.post("/updateservice",upload.single('file'),serviceController.updateServices);
+    router.get("/listservices",serviceController.listServices);
+    router.get("/detailServices",serviceController.detailsServices);
+    router.post("/deleteServices",serviceController.deleteServices);
    
+  
   
     app.use('/',router)
 }
