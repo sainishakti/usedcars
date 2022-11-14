@@ -8,6 +8,8 @@ const jobsSchema = new mongoose.Schema({
   jobLocation: { type: String},
   MinSalary: { type: String},
   MaxSalary: { type: String},
+  imageProfile: { type: String},
+  imageText :{ type: String},
   
 
   },

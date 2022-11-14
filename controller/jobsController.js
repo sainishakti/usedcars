@@ -2,9 +2,9 @@
 const jobsModel =require("../models/jobsModel.js")
 //Create Jobs
 module.exports.createJobs = async (req, res) => {
-    const { ProfileName ,RequiredSkillsAndCertificateDetails ,JD , jobLocation , MinSalary , MaxSalary } = req.body
+    const { imageText,ProfileName ,RequiredSkillsAndCertificateDetails ,JD , jobLocation , MinSalary , MaxSalary } = req.body
 
-if ( ProfileName && RequiredSkillsAndCertificateDetails && JD && jobLocation && MinSalary && MaxSalary ) {
+if ( imageText && ProfileName && RequiredSkillsAndCertificateDetails && JD && jobLocation && MinSalary && MaxSalary ) {
           try {
     const data = new jobsModel({
       ProfileName: ProfileName,
@@ -13,6 +13,8 @@ if ( ProfileName && RequiredSkillsAndCertificateDetails && JD && jobLocation && 
       jobLocation:jobLocation,
       MinSalary:MinSalary,
       MaxSalary : MaxSalary,
+      imageProfile:req.files.filename,
+      imageText:imageText
             })
             await data.save()
             res.status(201).send({ "status":"200", "success":true, "message": "Create Jobs Successfully",data })
@@ -36,6 +38,8 @@ if ( ProfileName && RequiredSkillsAndCertificateDetails && JD && jobLocation && 
         jobLocation:jobLocation,
         MinSalary:MinSalary,
         MaxSalary : MaxSalary,
+        imageProfile:req.files.filename,
+         imageText:imageText
       })
     if(data){
     res.send({ "status": "201","success":true, "message": "update Jobs Successfully",data })
