@@ -5,7 +5,7 @@ module.exports.addServices = async (req, res) => {
 
 if ( addMainText && addSubHeading  && addMainHeading && addInnerBoxText &&addInnerBoxContent) {
           try {
-    const doc = new servicesModel({
+    const data = new servicesModel({
         addMainText: addMainText,
         addSubHeading: addSubHeading,
         addMainHeading:addMainHeading,
@@ -13,8 +13,8 @@ if ( addMainText && addSubHeading  && addMainHeading && addInnerBoxText &&addInn
         addInnerBoxContent:addInnerBoxContent,
         image:req?.file?.filename
             })
-            await doc.save()
-            res.status(201).send({ "status":"200", "success":true, "message": "Add Services  Successfully" })
+            await data.save()
+            res.status(201).send({ "status":"200", "success":true, "message": "Add Services  Successfully",data})
           } catch (error) {
             console.log(error)
             res.status(401).send({ "status": "401","success":false, "message": "Unable to Services Add" })
