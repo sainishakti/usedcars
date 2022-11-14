@@ -11,7 +11,7 @@ console.log("user",user);
         adminId:"63614549151501e7eb202820"
             })
             await data.save()
-            res.status(201).send({ "status":"200", "success":true, "message": "Add  Blog  Successfully",data})
+            res.status(201).send({ "status":"200", "success":true, "message": "Add  PrivacyPolicy  Successfully",data})
           } catch (error) {
             console.log(error)
             res.status(401).send({ "status": "401","success":false, "message": "Unable to Add privacyPolicy" })
