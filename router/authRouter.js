@@ -20,7 +20,7 @@ module.exports =app=>{
     router.use('/Changepasswords', checkUserAuth)
     router.post("/Changepasswords",adminController.changeAdminPassword)
     router.post("/ForgotPassword",adminController.sendOtpEmail)
-    router.post("/setPassword",checkUserAuth)
+    //router.post("/setPassword",checkUserAuth)
     router.post("/setPassword",adminController.setPassword)
 
     
