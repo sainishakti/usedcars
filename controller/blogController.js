@@ -74,7 +74,7 @@ module.exports.updateBlog = async (req, res) => {
     try{
     const data = await blogModel.findByIdAndDelete({_id:_id})
     if(data){
-    res.send({ "status": "201","success":true, "message": "Delete log Successfully",data })
+    res.send({ "status": "201","success":true, "message": "Delete Blog Successfully",data })
     }else{
       res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
     }
