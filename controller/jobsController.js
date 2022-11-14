@@ -6,7 +6,7 @@ module.exports.createJobs = async (req, res) => {
 
 if ( ProfileName && RequiredSkillsAndCertificateDetails && JD && jobLocation && MinSalary && MaxSalary ) {
           try {
-    const doc = new jobsModel({
+    const data = new jobsModel({
       ProfileName: ProfileName,
       RequiredSkillsAndCertificateDetails: RequiredSkillsAndCertificateDetails,
       JD:JD,
@@ -14,8 +14,8 @@ if ( ProfileName && RequiredSkillsAndCertificateDetails && JD && jobLocation && 
       MinSalary:MinSalary,
       MaxSalary : MaxSalary,
             })
-            await doc.save()
-            res.status(201).send({ "status":"200", "success":true, "message": "Create Jobs Successfully" })
+            await data.save()
+            res.status(201).send({ "status":"200", "success":true, "message": "Create Jobs Successfully",data })
           } catch (error) {
             console.log(error)
             res.status(401).send({ "status": "401","success":false, "message": "Unable to Register" })
