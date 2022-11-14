@@ -37,9 +37,8 @@ module.exports.updateBlog = async (req, res) => {
       console.log("error",error);
   }
   }
-  //serviceBlog.............................................................//
+  //ListBlog.............................................................//
   module.exports.listBlog = async (req, res) => {
-    
     try{
     const data = await blogModel.find()
     if(data){
