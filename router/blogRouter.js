@@ -5,7 +5,7 @@ module.exports =app=>{
 
     router.post("/createblog",blogsController.addblog);
     router.post("/updateblog",blogsController.updateBlog);
-    router.post("/detailsblog",blogsController.detailsBlog);
+    router.get("/detailsblog",blogsController.detailsBlog);
     router.post("/deleteblog",blogsController.deleteBlog);
     
   
