@@ -13,7 +13,7 @@ if ( imageText && ProfileName && RequiredSkillsAndCertificateDetails && JD && jo
       jobLocation:jobLocation,
       MinSalary:MinSalary,
       MaxSalary : MaxSalary,
-      imageProfile:req.files.filename,
+      imageProfile:req?.files?.filename,
       imageText:imageText
             })
             await data.save()
@@ -38,7 +38,7 @@ if ( imageText && ProfileName && RequiredSkillsAndCertificateDetails && JD && jo
         jobLocation:jobLocation,
         MinSalary:MinSalary,
         MaxSalary : MaxSalary,
-        imageProfile:req.files.filename,
+        imageProfile:req?.files?.filename,
          imageText:imageText
       })
     if(data){
