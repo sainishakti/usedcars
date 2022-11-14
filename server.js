@@ -23,6 +23,7 @@ require("./router/jobsRouter.js")(app)
 require("./router/serviceRouter.js")(app)
 require("./router/contactRouter.js")(app)
 require("./router/blogRouter.js")(app)
+require("./router/privacyRouter.js")(app)
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`)
