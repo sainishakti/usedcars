@@ -20,7 +20,7 @@ module.exports.Admin = async (req, res) => {
           })
           console.log("data",data);
         if(data){
-        res.send({ "status": "201","success":true, "message": "update Admin Profile Successfully"})
+        res.send({ "status": "201","success":true, "message": "update Admin Profile Successfully",data})
         }else{
           res.status(401).send({"status": "401","success":false, "message": "Unable To update" })
         }
