@@ -2,17 +2,17 @@
 const jobsModel =require("../models/jobsModel.js")
 //Create Jobs
 module.exports.createJobs = async (req, res) => {
-    const { title ,description ,jobType , jobLocation , experience , skill } = req.body
+    const { ProfileName ,RequiredSkillsAndCertificateDetails ,JD , jobLocation , MinSalary , MaxSalary } = req.body
 
-if ( title && description && jobType && jobLocation && experience && skill ) {
+if ( ProfileName && RequiredSkillsAndCertificateDetails && JD && jobLocation && MinSalary && MaxSalary ) {
           try {
     const doc = new jobsModel({
-              title: title,
-              description: description,
-              jobType:jobType,
-              jobLocation:jobLocation,
-              experience:experience,
-              skill : skill,
+      ProfileName: ProfileName,
+      RequiredSkillsAndCertificateDetails: RequiredSkillsAndCertificateDetails,
+      JD:JD,
+      jobLocation:jobLocation,
+      MinSalary:MinSalary,
+      MaxSalary : MaxSalary,
             })
             await doc.save()
             res.status(201).send({ "status":"200", "success":true, "message": "Create Jobs Successfully" })
@@ -26,16 +26,16 @@ if ( title && description && jobType && jobLocation && experience && skill ) {
     }
 //updateJobs.................................................................//
   module.exports.updateJobs = async (req, res) => {
-    const { title ,description ,jobType , jobLocation , experience , skill,_id} = req.body
+    const { ProfileName ,RequiredSkillsAndCertificateDetails ,JD , jobLocation , MinSalary , MaxSalary } = req.body
     try{
     const data = await jobsModel.findByIdAndUpdate({ _id: _id },
       {
-        title: title,
-        description: description,
-        jobType:jobType,
+        ProfileName: ProfileName,
+        RequiredSkillsAndCertificateDetails: RequiredSkillsAndCertificateDetails,
+        JD:JD,
         jobLocation:jobLocation,
-        experience:experience,
-        skill : skill,
+        MinSalary:MinSalary,
+        MaxSalary : MaxSalary,
       })
     if(data){
     res.send({ "status": "201","success":true, "message": "update Jobs Successfully",data })

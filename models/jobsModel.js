@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 
 // Defining Schema
 const jobsSchema = new mongoose.Schema({
-  title: { type: String},
-  description: { type: String},
-  jobType: { type: String},
+  ProfileName: { type: String},
+  RequiredSkillsAndCertificateDetails:{ type: String},
+  JD: { type: String},
   jobLocation: { type: String},
-  experience: { type: String},
-  skill: { type: String},
+  MinSalary: { type: String},
+  MaxSalary: { type: String},
   
 
   },
