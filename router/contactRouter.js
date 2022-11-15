@@ -27,6 +27,7 @@ module.exports =app=>{
     
     router.post("/updateContact",upload.single('file'),contactController.updateContact);
     router.post("/deleteContact",contactController.deleteform);
+    router.get("/listContact",contactController.listForm);
   
     app.use('/',router)
 }
