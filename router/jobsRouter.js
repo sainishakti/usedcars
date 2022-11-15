@@ -1,7 +1,7 @@
 module.exports =app=>{
     const router = require("express").Router()
     const jobsController = require("../controller/jobsController.js") 
-
+    const multer = require("multer")
     var storages = multer.diskStorage({
         destination: function (req, file, cb) {
           cb(null, './upload')
