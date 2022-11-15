@@ -39,7 +39,7 @@ if ( imageText && ProfileName && RequiredSkillsAndCertificateDetails && JD && jo
         MinSalary:MinSalary,
         MaxSalary : MaxSalary,
         imageProfile:req?.files?.filename,
-         imageText:imageText
+        imageText:imageText
       })
     if(data){
     res.send({ "status": "201","success":true, "message": "update Jobs Successfully",data })
