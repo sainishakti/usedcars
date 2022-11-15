@@ -25,6 +25,7 @@ require("./router/contactRouter.js")(app)
 require("./router/blogRouter.js")(app)
 require("./router/privacyRouter.js")(app)
 require("./router/termRouter.js")(app)
+require("./router/contactUsRouterModel.js")(app)
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`)
