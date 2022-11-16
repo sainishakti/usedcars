@@ -11,7 +11,7 @@ app.use(cors())
 
 // Database Connection
 require("./config/config.js")
-app.use('upload',express.static('upload'))
+
 // JSON
 
 app.use(express.json())
@@ -28,7 +28,7 @@ require("./router/termRouter.js")(app)
 require("./router/contactUsRouterModel.js")(app)
 require("./router/videoRouter.js")(app)
 require("./router/aboutrouter.js")(app)
-
+app.use('upload',express.static('/upload'))
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`)
