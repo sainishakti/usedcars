@@ -3,7 +3,9 @@ const replyModel =require("../models/replyformModel.js")
 //Create Jobs
 module.exports.addContactus = async (req, res) => {
     const { TopSliderText ,OurContactDetailHere ,OurEmailDetailHere , OurLocation  } = req.body
-    if ( TopSliderText && OurContactDetailHere  && OurEmailDetailHere && OurLocation ) {
+  const user = await contactusModel.findOne({_id:"63747cb4f4b86b457124b827"})
+  console.log("user",user);
+          if (!user ){
    try {
     const data = new contactusModel({
         TopSliderText: TopSliderText,
@@ -18,9 +20,17 @@ module.exports.addContactus = async (req, res) => {
             res.status(401).send({ "status": "401","success":false, "message": "Unable to Add uscontact" })
           }
         } else {
-    res.status(401).send({"status": "401","success":false, "message": "All fields are required" })
-      }
-    }
+          const data = await contactusModel.findOneAndUpdate({_id:"63747cb4f4b86b457124b827"},
+                {
+                  TopSliderText: TopSliderText,
+                  OurContactDetailHere: OurContactDetailHere,
+                  OurEmailDetailHere:OurEmailDetailHere,
+                  OurLocation:OurLocation,
+                })
+              if(data){
+              res.send({ "status": "201","success":true, "message": "Replace aboutUs Successfully",data })
+              }}
+   }
   //delete..........................................................//
   module.exports.deleteform = async (req, res) => {
     const {_id} = req.body;
