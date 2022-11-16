@@ -8,6 +8,7 @@ module.exports =app=>{
     router.get("/detailsblog",blogsController.detailsBlog);
     router.post("/deleteblog",blogsController.deleteBlog);
     router.get("/listblogs",blogsController.listBlog);
+    router.post("/commentBlog",blogsController.addblogComment);
     
   
     app.use('/',router)

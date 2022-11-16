@@ -1,4 +1,5 @@
 const blogModel =require("../models/blogmodel.js")
+const blogComment =require("../models/commentModel.js")
 //Create Jobs
 module.exports.addblog = async (req, res) => {
     const { heading ,content} = req.body
@@ -83,3 +84,25 @@ module.exports.updateBlog = async (req, res) => {
       console.log("error",error);
   }
   }
+  //comment.................................
+
+  module.exports.addblogComment = async (req, res) => {
+    const { name ,email,website} = req.body
+    if ( name && email,website,comment) {
+   try {
+    const data = new blogComment({
+      name: name,
+        email: email,
+        website:website,
+        comment:comment
+            })
+            await data.save()
+            res.status(201).send({ "status":"200", "success":true, "message": "Add  Comment  Successfully",data})
+          } catch (error) {
+            console.log(error)
+            res.status(401).send({ "status": "401","success":false, "message": "Unable to Add Comment" })
+          }
+        } else {
+    res.status(401).send({"status": "401","success":false, "message": "All fields are required" })
+      }
+    }
