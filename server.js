@@ -8,10 +8,10 @@ const port = process.env.PORT
 //const port =3000;
 // CORS Policy
 app.use(cors())
-app.use('upload',express.static('/upload'))
+
 // Database Connection
 require("./config/config.js")
-
+app.use('upload',express.static('/upload'))
 // JSON
 
 app.use(express.json())
