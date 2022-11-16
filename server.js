@@ -11,7 +11,7 @@ app.use(cors())
 
 // Database Connection
 require("./config/config.js")
-app.use('upload',express.static('/upload'))
+app.use('upload',express.static('upload'))
 // JSON
 
 app.use(express.json())
