@@ -8,7 +8,7 @@ const port = process.env.PORT
 //const port =3000;
 // CORS Policy
 app.use(cors())
-
+app.use('upload',express.static('/upload'))
 // Database Connection
 require("./config/config.js")
 
@@ -28,7 +28,7 @@ require("./router/termRouter.js")(app)
 require("./router/contactUsRouterModel.js")(app)
 require("./router/videoRouter.js")(app)
 require("./router/aboutrouter.js")(app)
-app.use('upload',express.static('/upload'))
+
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`)
