@@ -11,7 +11,7 @@ if ( addMainText && addSubHeading  && addMainHeading && addInnerBoxText &&addInn
         addMainHeading:addMainHeading,
         addInnerBoxText:addInnerBoxText,
         addInnerBoxContent:addInnerBoxContent,
-        image:req?.file?.filename
+        image:"https://adminportals.herokuapp.com/upload/"+req?.file?.filename
             })
             await data.save()
             res.status(201).send({ "status":"200", "success":true, "message": "Add Services  Successfully",data})
@@ -34,7 +34,7 @@ module.exports.updateServices = async (req, res) => {
       addMainHeading:addMainHeading,
       addInnerBoxText:addInnerBoxText,
       addInnerBoxContent:addInnerBoxContent,
-      image:req?.file?.filename
+      image:"https://adminportals.herokuapp.com/upload/"+req?.file?.filename
     })
   if(data){
   res.send({ "status": "201","success":true, "message": "update services Successfully",data })

@@ -13,7 +13,7 @@ if ( imageText && ProfileName && RequiredSkillsAndCertificateDetails && JD && jo
       jobLocation:jobLocation,
       MinSalary:MinSalary,
       MaxSalary : MaxSalary,
-      imageProfile:req?.files?.filename,
+      imageProfile:"https://adminportals.herokuapp.com/upload/"+req?.file?.filename,
       imageText:imageText
             })
             await data.save()

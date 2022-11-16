@@ -5,7 +5,7 @@ module.exports.addVideo = async (req, res) => {
    try {
     // console.log("data",req.file.fileName);
     const data = new videoModel({
-        video: req?.file?.filename
+        video: "https://adminportals.herokuapp.com/upload/"+req?.file?.filename
             })
             await data.save()
             if(data){
