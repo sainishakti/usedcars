@@ -13,7 +13,7 @@ module.exports.addaboutUs = async (req, res) => {
       image:"https://adminportals.herokuapp.com/upload/"+req?.file?.filename
             })
             await data.save()
-            res.status(201).send({ "status":"200", "success":true, "message": "Add  Comment  Successfully",data})
+            res.status(201).send({ "status":"200", "success":true, "message": "Add  AboutUs  Successfully",data})
           } catch (error) {
             console.log(error)
             res.status(401).send({ "status": "401","success":false, "message": "Unable to Add Comment" })
