@@ -28,7 +28,7 @@ if ( imageText && ProfileName && RequiredSkillsAndCertificateDetails && JD && jo
     }
 //updateJobs.................................................................//
   module.exports.updateJobs = async (req, res) => {
-    const { ProfileName ,RequiredSkillsAndCertificateDetails ,JD,_id, jobLocation , MinSalary , MaxSalary } = req.body
+    const {imageText, ProfileName ,RequiredSkillsAndCertificateDetails ,JD,_id, jobLocation , MinSalary , MaxSalary } = req.body
     try{
     const data = await jobsModel.findByIdAndUpdate({ _id: _id },
       {
