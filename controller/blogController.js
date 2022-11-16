@@ -87,7 +87,7 @@ module.exports.updateBlog = async (req, res) => {
   //comment.................................
 
   module.exports.addblogComment = async (req, res) => {
-    const { name ,email,website} = req.body
+    const { name ,email,website,comment} = req.body
     if ( name && email,website,comment) {
    try {
     const data = new blogComment({
