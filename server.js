@@ -13,7 +13,7 @@ app.use(cors())
 require("./config/config.js")
 
 // JSON
-app.use('upload',express.static('/upload'))
+app.use('upload',express.static('upload'))
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
