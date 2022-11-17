@@ -1,14 +1,14 @@
 const servicesModel =require("../models/serviceModel.js")
 //Create services....................
 module.exports.addServices = async (req, res) => {
-    const { addMainText ,addSubHeading ,addMainHeading , addInnerBoxText , addInnerBoxContent } = req.body
+    const { addInnerBoxText , addInnerBoxContent } = req.body
 
-if ( addMainText && addSubHeading  && addMainHeading && addInnerBoxText &&addInnerBoxContent) {
+if (addInnerBoxText &&addInnerBoxContent) {
           try {
     const data = new servicesModel({
-        addMainText: addMainText,
-        addSubHeading: addSubHeading,
-        addMainHeading:addMainHeading,
+        // addMainText: addMainText,
+        // addSubHeading: addSubHeading,
+        // addMainHeading:addMainHeading,
         addInnerBoxText:addInnerBoxText,
         addInnerBoxContent:addInnerBoxContent,
         image:"https://adminportals.herokuapp.com/upload/"+req?.file?.filename
