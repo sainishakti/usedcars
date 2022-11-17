@@ -25,7 +25,7 @@ module.exports.addaboutUs = async (req, res) => {
 module.exports.updateAboutus = async (req, res) => {
   const {name,skill,_id} = req.body
   try{
-  const data = await blogModel.findByIdAndUpdate({ _id: _id },
+  const data = await aboutModel.findByIdAndUpdate({ _id: _id },
     {
       name: name,
       skill: skill,
