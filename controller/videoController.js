@@ -27,7 +27,7 @@ console.log("user",user);
 //uploadLogo.........................................................
 module.exports.addLogo = async (req, res) => {
     try{
-      const user = await videoModel.findOne({_id:"637523b979e7cc90dadfc4a2"})
+      const user = await logoModel.findOne({_id:"637523b979e7cc90dadfc4a2"})
       console.log("user",user);
           if (!user ){
      const data = new  logoModel({
@@ -36,7 +36,7 @@ module.exports.addLogo = async (req, res) => {
              await data.save()
       res.status(201).send({ "status":"200", "success":true, "message": "Add Logo  Successfully",data})
              }else{
-         const data = await videoModel.findOneAndUpdate({_id:"637523b979e7cc90dadfc4a2"},
+         const data = await logoModel.findOneAndUpdate({_id:"637523b979e7cc90dadfc4a2"},
               {
                 logo: req?.file?.filename
               })
