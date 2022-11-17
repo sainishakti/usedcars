@@ -12,6 +12,8 @@ module.exports =app=>{
     })
     var upload = multer({ storage: storage })
     router.post("/addtestimonial",upload.single('file'),testController.addtestimoinal);
+    router.get("/listTestimonial",testController.listtest);
+    router.post("/deleteTestimonial",testController.deletetest);
     
 
 
