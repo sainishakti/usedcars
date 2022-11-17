@@ -10,7 +10,7 @@ module.exports.addContact = async (req, res) => {
       email: email,
       phoneNumber:phoneNumber,
       message:message,
-      image:"https://adminportals.herokuapp.com/upload/"+req?.file?.filename
+      image:"https://adminportals.herokuapp.com/uploads/"+req?.file?.filename
             })
             await data.save()
             res.status(201).send({ "status":"200", "success":true, "message": "Add contact  Successfully",data})
@@ -33,7 +33,7 @@ module.exports.addContact = async (req, res) => {
       phoneNumber:phoneNumber,
       message:message,
       subject:subject,
-      image:"https://adminportals.herokuapp.com/upload/"+req?.file?.filename
+      image:"https://adminportals.herokuapp.com/uploads/"+req?.file?.filename
       })
     if(data){
     res.send({ "status": "201","success":true, "message": "update contactForm Successfully",data })

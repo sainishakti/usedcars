@@ -16,7 +16,7 @@ module.exports.Admin = async (req, res) => {
           address : address,
           password:hashPassword,
           phone:phone,
-          adminProfile:"https://adminportals.herokuapp.com/upload/"+req?.file?.filename
+          adminProfile:"https://adminportals.herokuapp.com/uploads/"+req?.file?.filename
           })
           console.log("data",data);
         if(data){

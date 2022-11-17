@@ -5,7 +5,7 @@ module.exports =app=>{
 //add
     var storage = multer.diskStorage({
         destination: function (req, file, cb) {
-          cb(null, './upload')
+          cb(null, './uploads')
         },
         filename: function (req, file, cb) {
           cb(null, file.originalname)
@@ -17,7 +17,7 @@ module.exports =app=>{
     //update..........................................
     var storages = multer.diskStorage({
         destination: function (req, file, cb) {
-          cb(null, './upload')
+          cb(null, './uploads')
         },
         filename: function (req, file, cb) {
           cb(null, file.originalname)
