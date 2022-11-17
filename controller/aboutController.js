@@ -56,3 +56,18 @@ module.exports.listaboutUs = async(req, res) => {
     console.log("errorr",error);
 }
 }
+//details.............................................//
+module.exports.detailsAboutUs = async(req, res) => {
+  const {_id} = req.query;
+  try{
+  const data = await aboutModel.find({_id:_id})
+  if(data){
+  res.send({ "status": "201","success":true, "message": "Get Details AboutUs Successfully",data })
+  }else{
+    res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
+  }
+  }catch(error){
+    res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+    console.log("errorr",error);
+}
+}

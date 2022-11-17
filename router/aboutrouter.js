@@ -14,6 +14,8 @@ module.exports =app=>{
     router.post("/aboutUs",upload.single('file'),aboutController.addaboutUs);
     router.post("/aboutusUpdate",upload.single('file'),aboutController.updateAboutus);
     router.get("/aboutusList",aboutController.listaboutUs);
+    router.get("/aboutusDetails",aboutController.detailsAboutUs);
+
 
 
     app.use('/',router)
