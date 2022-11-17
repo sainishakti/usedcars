@@ -59,6 +59,7 @@ module.exports.listaboutUs = async(req, res) => {
 //details.............................................//
 module.exports.detailsAboutUs = async(req, res) => {
   const {_id} = req.query;
+  console.log(_id);
   try{
   const data = await aboutModel.findOne({_id:_id})
   if(data){
