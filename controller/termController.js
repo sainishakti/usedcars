@@ -19,7 +19,7 @@ console.log("user",user);
         }else {
             const data = await termModel.findOneAndUpdate({adminId:"63614549151501e7eb202820"},
                 {
-                policy: policy,
+                  termConditions: termConditions,
                 })
               if(data){
               res.send({ "status": "201","success":true, "message": "Replace TermConditions Successfully",data })
