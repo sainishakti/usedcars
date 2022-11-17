@@ -41,3 +41,18 @@ module.exports.updateAboutus = async (req, res) => {
     console.log("error",error);
 }
 }
+//listUpdateus............
+module.exports.listaboutUs = async (req, res) => {
+  
+  try{
+  const data = await aboutModel.find()
+  if(data){
+  res.send({ "status": "201","success":true, "message": "Get List  AboutUs Successfully",data })
+  }else{
+    res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
+  }
+  }catch(error){
+    res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+    console.log("error",error);
+}
+}

@@ -13,6 +13,7 @@ module.exports =app=>{
     var upload = multer({ storage: storage })
     router.post("/aboutUs",upload.single('file'),aboutController.addaboutUs);
     router.post("/aboutusUpdate",upload.single('file'),aboutController.updateAboutus);
+    router.post("/aboutusList",aboutController.listaboutUs);
 
 
     app.use('/',router)
