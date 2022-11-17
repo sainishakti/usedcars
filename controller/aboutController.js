@@ -71,3 +71,18 @@ module.exports.detailsAboutUs = async(req, res) => {
     console.log("errorr",error);
 }
 }
+//deleteAboutUs................................................
+module.exports.deleteAboutUs = async(req, res) => {
+  const _id = req.body._id;
+  try{
+  const data = await aboutModel.findByIdAndDelete({_id:_id})
+  if(data){
+  res.send({ "status": "201","success":true, "message": "Get Details AboutUs Successfully",data })
+  }else{
+    res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
+  }
+  }catch(error){
+    res.status(401).send({"status": "401","success":false, "message":  "Something Went Wrong" })
+    console.log("errorr",error);
+}
+}
