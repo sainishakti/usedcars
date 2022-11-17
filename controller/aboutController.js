@@ -20,3 +20,24 @@ module.exports.addaboutUs = async (req, res) => {
     res.status(401).send({"status": "401","success":false, "message": "All fields are required" })
       }
     }
+
+//UpdateAboutus
+module.exports.updateAboutus = async (req, res) => {
+  const {name,skill,_id} = req.body
+  try{
+  const data = await blogModel.findByIdAndUpdate({ _id: _id },
+    {
+      name: name,
+      skill: skill,
+      image:"https://adminportals.herokuapp.com/upload/"+req?.file?.filename
+    })
+  if(data){
+  res.send({ "status": "201","success":true, "message": "update  aboutUs Successfully",data })
+  }else{
+    res.status(401).send({"status": "401","success":false, "message": "Unable To update" })
+  }
+  }catch(error){
+    res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+    console.log("error",error);
+}
+}
