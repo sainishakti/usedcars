@@ -2,13 +2,11 @@ const aboutModel =require('../models/aboutUsModel.js')
 
 
 module.exports.addaboutUs = async (req, res) => {
-    const { subHeading ,mainHeading,name,skill} = req.body
-    if ( name && subHeading,mainHeading,skill) {
+    const {name,skill} = req.body
+    if ( name && skill) {
    try {
     const data = new aboutModel({
       name: name,
-      subHeading: subHeading,
-      mainHeading:mainHeading,
       skill:skill,
       image:"https://adminportals.herokuapp.com/upload/"+req?.file?.filename
             })
