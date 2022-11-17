@@ -67,7 +67,7 @@ module.exports.detailsAboutUs = async(req, res) => {
     res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
   }
   }catch(error){
-    res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+    res.status(401).send({"status": "401","success":false, "message":  "Something Went Wrong" })
     console.log("errorr",error);
 }
 }
