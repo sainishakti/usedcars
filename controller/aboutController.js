@@ -8,7 +8,7 @@ module.exports.addaboutUs = async (req, res) => {
     const data = new aboutModel({
       name: name,
       skill:skill,
-      image:"https://adminportals.herokuapp.com/upload/"+req?.file?.filename
+      image:"https://adminportals.herokuapp.com/uploads/"+req?.file?.filename
             })
             await data.save()
             res.status(201).send({ "status":"200", "success":true, "message": "Add  AboutUs  Successfully",data})
