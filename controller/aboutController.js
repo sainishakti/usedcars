@@ -74,12 +74,13 @@ module.exports.detailsAboutUs = async(req, res) => {
 //deleteAboutUs................................................
 module.exports.deleteAboutUs = async(req, res) => {
   const _id = req.body._id;
+  console.log(_id);
   try{
-  const data = await aboutModel.findOneAndDelete({_id:_id})
+  const data = await aboutModel.findByIdAndDelete({_id:_id})
   if(data){
   res.send({ "status": "201","success":true, "message": "Get Details AboutUs Successfully",data })
   }else{
-    res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
+    res.status(401).send({"status": "401","success":false, "message": "Unable To Deletet" })
   }
   }catch(error){
     res.status(401).send({"status": "401","success":false, "message":  "Something Went Wrong" })
