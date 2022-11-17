@@ -58,10 +58,10 @@ module.exports.listaboutUs = async(req, res) => {
 }
 //details.............................................//
 module.exports.detailsAboutUs = async(req, res) => {
-  const {_id} = req.query;
+  const{_id} = req.query;
   console.log(_id);
   try{
-  const data = await aboutModel.findOne({_id:_id})
+  const data = await aboutModel.findOne({_id:_id});
   if(data){
   res.send({ "status": "201","success":true, "message": "Get Details AboutUs Successfully",data })
   }else{
