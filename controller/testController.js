@@ -66,3 +66,25 @@ module.exports.addtestimoinal = async (req, res) => {
           console.log("errorr",error);
       }
       }
+      //edit..................................................
+      module.exports.updateTest = async (req, res) => {
+        const{reviewerProfile,reviewerName,review,_id} = req.body;
+        console.log("_id",_id,req.body);
+        try{
+        const data = await testModel.findOneAndUpdate({ _id:_id },
+          {
+        reviewerProfile: reviewerProfile,
+        reviewerName:reviewerName,
+        review:review,
+        image:"https://adminportals.herokuapp.com/uploads/"+req?.file?.filename
+          })
+        if(data){
+        res.send({ "status": "201","success":true, "message": "update  testimoinal  Successfully",data })
+        }else{
+          res.status(401).send({"status": "401","success":false, "message": "Unable To update" })
+        }
+        }catch(error){
+          res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+          console.log("error",error);
+      }
+      }
