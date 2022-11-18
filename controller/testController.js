@@ -70,6 +70,7 @@ module.exports.addtestimoinal = async (req, res) => {
       module.exports.updateTest = async (req, res) => {
         const{reviewerProfile,reviewerName,review,_id} = req.body;
         console.log("_id",_id,req.body);
+        console.log("req",req.file.filename);
         try{
         const data = await testModel.findOneAndUpdate({ _id:_id },
           {
