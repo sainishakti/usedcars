@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 // Defining Schema
 const serviceSchema = new mongoose.Schema({
 
-  addInnerBoxContent: { type: String},
+  serviceName: { type: String},
+  serviceContent: { type: String},
+  image: { type: String},
   
   
 

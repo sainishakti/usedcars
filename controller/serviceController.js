@@ -1,16 +1,11 @@
 const servicesModel =require("../models/serviceModel.js")
 //Create services....................
 module.exports.addServices = async (req, res) => {
-    const { addInnerBoxText , addInnerBoxContent } = req.body
-
-if (addInnerBoxText &&addInnerBoxContent) {
-          try {
+    const { serviceName , serviceContent } = req.body
+try {
     const data = new servicesModel({
-        // addMainText: addMainText,
-        // addSubHeading: addSubHeading,
-        // addMainHeading:addMainHeading,
-        addInnerBoxText:addInnerBoxText,
-        addInnerBoxContent:addInnerBoxContent,
+        serviceName:serviceName,
+        serviceContent:serviceContent,
         image:"https://adminportals.herokuapp.com/uploads/"+req?.file?.filename
             })
             await data.save()
@@ -19,9 +14,7 @@ if (addInnerBoxText &&addInnerBoxContent) {
             console.log(error)
             res.status(401).send({ "status": "401","success":false, "message": "Unable to Services Add" })
           }
-        } else {
-    res.status(401).send({"status": "401","success":false, "message": "All fields are required" })
-      }
+        
     }
 //updateService............................................................/
 module.exports.updateServices = async (req, res) => {
@@ -29,11 +22,8 @@ module.exports.updateServices = async (req, res) => {
   try{
   const data = await servicesModel.findByIdAndUpdate({ _id: _id },
     {
-      addMainText: addMainText,
-      addSubHeading: addSubHeading,
-      addMainHeading:addMainHeading,
-      addInnerBoxText:addInnerBoxText,
-      addInnerBoxContent:addInnerBoxContent,
+      serviceName:serviceName,
+      serviceContent:serviceContent,
       image:"https://adminportals.herokuapp.com/uploads/"+req?.file?.filename
     })
   if(data){
