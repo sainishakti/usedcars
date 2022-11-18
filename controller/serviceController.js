@@ -18,7 +18,7 @@ try {
     }
 //updateService............................................................/
 module.exports.updateServices = async (req, res) => {
-  const { addMainText ,addSubHeading ,addMainHeading , addInnerBoxText , addInnerBoxContent,_id} = req.body
+  const { serviceName , serviceContent } = req.body
   try{
   const data = await servicesModel.findByIdAndUpdate({ _id: _id },
     {
