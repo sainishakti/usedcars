@@ -23,6 +23,8 @@ module.exports =app=>{
   })
   var uploads = multer({ storage: storages })
   router.post("/uploadImages",uploads.array('file',10),videoController.addMutiple);
+  router.post("/updatedImages",uploads.array('file',10),videoController.updateImages);
+  router.post("/deleteImages",videoController.deleteImages);
   
 
 

@@ -62,3 +62,36 @@ module.exports.addLogo = async (req, res) => {
                 res.status(401).send({ "status": "401","success":false, "message": "Something Went Wrong" })
               }
             }
+//deleteimages.................................
+            module.exports.deleteImages = async(req, res) => {
+              const _id = req.body._id;
+              console.log(_id);
+              try{
+              const data = await logoModel.findByIdAndDelete({_id:_id})
+              if(data){
+              res.send({ "status": "201","success":true, "message": "delete Images Successfully",data })
+              }else{
+                res.status(401).send({"status": "401","success":false, "message": "Unable To Deletet" })
+              }
+              }catch(error){
+                res.status(401).send({"status": "401","success":false, "message":  "Something Went Wrong" })
+                console.log("errorr",error);
+            }
+            }
+            //edit..................................................
+            module.exports.updateImages = async (req, res) => {
+              try{
+              const data = await logoModel.findOneAndUpdate({ _id:_id },
+                {
+              image:req.files
+                })
+              if(data){
+              res.send({ "status": "201","success":true, "message": "update  Images  Successfully",data })
+              }else{
+                res.status(401).send({"status": "401","success":false, "message": "Unable To update" })
+              }
+              }catch(error){
+                res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+                console.log("error",error);
+            }
+            }
