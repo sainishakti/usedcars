@@ -18,9 +18,10 @@ try {
     }
 //updateService............................................................/
 module.exports.updateServices = async (req, res) => {
-  const { serviceName , serviceContent } = req.body
+  const { serviceName ,serviceContent,_id } = req.body
+  console.log(req.body);
   try{
-  const data = await servicesModel.findByIdAndUpdate({ _id: _id },
+  const data = await servicesModel.findByIdAndUpdate({ _id:_id },
     {
       serviceName:serviceName,
       serviceContent:serviceContent,
