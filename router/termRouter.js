@@ -7,6 +7,7 @@ module.exports =app=>{
     router.post("/updateTermConditions",termController.updateConditions);
     router.get("/GetTermConditions",termController.GetConditions);
     router.post("/DeleteTermConditions",termController.deleteConditions);
+    
 
 
 
