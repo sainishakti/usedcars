@@ -15,6 +15,7 @@ module.exports =app=>{
     router.get("/listTestimonial",testController.listtest);
     router.post("/deleteTestimonial",testController.deletetest);
     router.post("/updateTestimonial",upload.single('file'),testController.updateTest);
+    router.get("/detailTestimonial",testController.detailstest);
     
 
 
