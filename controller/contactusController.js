@@ -81,3 +81,23 @@ module.exports.addContactus = async (req, res) => {
         
    }
     }
+    //edit..................................
+    module.exports.updateContactUs = async (req, res) => {
+      const {OurContactDetailHere ,OurEmailDetailHere , OurLocation,_id  } = req.body
+     try{
+      const data = await contactusModel.findOneAndUpdate({ _id:_id },
+        {
+      OurContactDetailHere: OurContactDetailHere,
+      OurEmailDetailHere:OurEmailDetailHere,
+      OurLocation:OurLocation,
+        })
+      if(data){
+      res.send({ "status": "201","success":true, "message": "update  contactUs  Successfully",data })
+      }else{
+        res.status(401).send({"status": "401","success":false, "message": "Unable To update" })
+      }
+      }catch(error){
+        res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+        console.log("error",error);
+    }
+    }

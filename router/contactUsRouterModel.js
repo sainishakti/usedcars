@@ -7,6 +7,7 @@ module.exports =app=>{
     router.post("/deleteContactUs",contactUsController.deleteform);
     router.get("/GetListUs",contactUsController.listForm);
     router.post("/addReply",contactUsController.addReply);
+    router.post("/editContact",contactUsController.updateContactUs);
 
 
 
