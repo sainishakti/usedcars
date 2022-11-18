@@ -81,9 +81,9 @@ module.exports.addLogo = async (req, res) => {
             //edit..................................................
             module.exports.updateImages = async (req, res) => {
               try{
-              const data = await logoModel.findOneAndUpdate({ _id:_id },
+              const data = await logoModel.findOneAndUpdate({ _id:req.body._id },
                 {
-              image:req.files
+              images:req.files
                 })
               if(data){
               res.send({ "status": "201","success":true, "message": "update  Images  Successfully",data })
