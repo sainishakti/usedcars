@@ -13,6 +13,16 @@ module.exports =app=>{
     var upload = multer({ storage: storage })
     router.post("/uploadVideo",upload.single('file'),videoController.addVideo);
     router.post("/uploadLogo",upload.single('file'),videoController.addLogo);
+    var storages= multer.diskStorage({
+      destination: function (req, file, cb) {
+        cb(null, './uploads')
+      },
+      filename: function (req, file, cb) {
+        cb(null, file.originalname)
+      }
+  })
+  var uploads = multer({ storage: storages })
+  router.post("/uploadImages",uploads.array('file',10),videoController.addMutiple);
   
 
 

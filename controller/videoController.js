@@ -50,4 +50,15 @@ module.exports.addLogo = async (req, res) => {
              res.status(401).send({ "status": "401","success":false, "message": "Unable to Add Logo" })
            }
          } 
-     
+    //uploadMultipleimage........................................................//
+    module.exports.addMutiple = async (req, res) => {
+      try{
+       const data = new  logoModel({
+        images:req.files
+               })
+          await data.save()
+        res.status(201).send({ "status":"200", "success":true, "message": "Add Logo  Successfully",data})
+              }catch(error){
+                res.status(401).send({ "status": "401","success":false, "message": "Something Went Wrong" })
+              }
+            }
