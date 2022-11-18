@@ -8,6 +8,7 @@ module.exports.addblog = async (req, res) => {
     const data = new blogModel({
         heading: heading,
         content: content,
+        image:"https://adminportals.herokuapp.com/uploads/"+req?.file?.filename
             })
             await data.save()
             res.status(201).send({ "status":"200", "success":true, "message": "Add  Blog  Successfully",data})
@@ -27,6 +28,7 @@ module.exports.updateBlog = async (req, res) => {
       {
         heading: heading,
         content: content,
+        image:"https://adminportals.herokuapp.com/uploads/"+req?.file?.filename
       })
     if(data){
     res.send({ "status": "201","success":true, "message": "update Blog Successfully",data })
