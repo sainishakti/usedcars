@@ -2,9 +2,9 @@
 const jobsModel =require("../models/jobsModel.js")
 //Create Jobs
 module.exports.createJobs = async (req, res) => {
-    const { imageText,ProfileName ,RequiredSkillsAndCertificateDetails ,JD , jobLocation , MinSalary , MaxSalary } = req.body
+    const { description,ProfileName ,RequiredSkillsAndCertificateDetails ,JD , jobLocation , MinSalary , MaxSalary } = req.body
 
-if ( imageText && ProfileName && RequiredSkillsAndCertificateDetails && JD && jobLocation && MinSalary && MaxSalary ) {
+if ( description && ProfileName && RequiredSkillsAndCertificateDetails && JD && jobLocation && MinSalary && MaxSalary ) {
           try {
     const data = new jobsModel({
       ProfileName: ProfileName,
@@ -13,8 +13,7 @@ if ( imageText && ProfileName && RequiredSkillsAndCertificateDetails && JD && jo
       jobLocation:jobLocation,
       MinSalary:MinSalary,
       MaxSalary : MaxSalary,
-      imageProfile:"https://adminportals.herokuapp.com/uploads/"+req?.file?.filename,
-      imageText:imageText
+      description:description
             })
             await data.save()
             res.status(201).send({ "status":"200", "success":true, "message": "Create Jobs Successfully",data })
@@ -28,7 +27,7 @@ if ( imageText && ProfileName && RequiredSkillsAndCertificateDetails && JD && jo
     }
 //updateJobs.................................................................//
   module.exports.updateJobs = async (req, res) => {
-    const {imageText, ProfileName ,RequiredSkillsAndCertificateDetails ,JD,_id, jobLocation , MinSalary , MaxSalary } = req.body
+    const {description, ProfileName ,RequiredSkillsAndCertificateDetails ,JD,_id, jobLocation , MinSalary , MaxSalary } = req.body
     try{
     const data = await jobsModel.findByIdAndUpdate({ _id: _id },
       {
@@ -38,8 +37,8 @@ if ( imageText && ProfileName && RequiredSkillsAndCertificateDetails && JD && jo
         jobLocation:jobLocation,
         MinSalary:MinSalary,
         MaxSalary : MaxSalary,
-        imageProfile:"https://adminportals.herokuapp.com/uploads/"+req?.file?.filename,
-        imageText:imageText
+        description:description
+        
       })
     if(data){
     res.send({ "status": "201","success":true, "message": "update Jobs Successfully",data })
