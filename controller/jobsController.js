@@ -4,7 +4,7 @@ const jobsModel =require("../models/jobsModel.js")
 module.exports.createJobs = async (req, res) => {
     const { description,ProfileName ,RequiredSkillsAndCertificateDetails ,JD , jobLocation , MinSalary , MaxSalary } = req.body
 
-if ( description && ProfileName && RequiredSkillsAndCertificateDetails && JD && jobLocation && MinSalary && MaxSalary ) {
+
           try {
     const data = new jobsModel({
       ProfileName: ProfileName,
@@ -21,9 +21,7 @@ if ( description && ProfileName && RequiredSkillsAndCertificateDetails && JD && 
             console.log(error)
             res.status(401).send({ "status": "401","success":false, "message": "Unable to Register" })
           }
-        } else {
-    res.status(401).send({"status": "401","success":false, "message": "All fields are required" })
-      }
+        
     }
 //updateJobs.................................................................//
   module.exports.updateJobs = async (req, res) => {
