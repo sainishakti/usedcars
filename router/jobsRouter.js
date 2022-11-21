@@ -1,6 +1,7 @@
 module.exports =app=>{
     const router = require("express").Router()
     const jobsController = require("../controller/jobsController.js") 
+    const applyController = require("../controller/jobsApply.js") 
     const multer = require("multer")
     // var storages = multer.diskStorage({
     //     destination: function (req, file, cb) {
@@ -16,6 +17,7 @@ module.exports =app=>{
     router.post("/deleteJobs",jobsController.deleteJobs);
     router.get("/getJobs",jobsController.getJobs);
     router.get("/getListJobs",jobsController.listJobs);
+    router.post("/jobApply",applyController.apply);
   
     app.use('/',router)
 }
