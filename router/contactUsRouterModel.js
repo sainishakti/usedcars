@@ -10,7 +10,5 @@ module.exports =app=>{
     router.post("/editContact",contactUsController.updateContactUs);
 
 
-
-
-    app.use('/',router)
+ app.use('/',router)
 }
