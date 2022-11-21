@@ -29,6 +29,7 @@ require("./router/contactUsRouterModel.js")(app)
 require("./router/videoRouter.js")(app)
 require("./router/aboutrouter.js")(app)
 require("./router/testRouter.js")(app)
+require("./router/faqRouter.js")(app)
 
 
 app.listen(port, () => {
