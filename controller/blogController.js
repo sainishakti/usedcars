@@ -108,3 +108,17 @@ module.exports.updateBlog = async (req, res) => {
     res.status(401).send({"status": "401","success":false, "message": "All fields are required" })
       }
     }
+    //list Comment.........................................//
+    module.exports.listComment = async (req, res) => {
+      try{
+      const data = await blogComment.find()
+      if(data){
+      res.send({ "status": "201","success":true, "message": "Get List  Comment Successfully",data })
+      }else{
+        res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
+      }
+      }catch(error){
+        res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+        console.log("error",error);
+    }
+    }

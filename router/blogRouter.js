@@ -21,6 +21,7 @@ module.exports =app=>{
     router.post("/deleteblog",blogsController.deleteBlog);
     router.get("/listblogs",blogsController.listBlog);
     router.post("/commentBlog",blogsController.addblogComment);
+    router.get("/getComment",blogsController.listComment);
     
   
     app.use('/',router)
