@@ -18,7 +18,7 @@ module.exports.apply = async (req, res) => {
             res.status(201).send({ "status":"200", "success":true, "message": "Create JobsApply Successfully",data })
           } catch (error) {
             console.log(error)
-            res.status(401).send({ "status": "401","success":false, "message": "Unable to Register" })
+            res.status(401).send({ "status": "401","success":false, "message": "Unable to Apply" })
           }
         
     }
