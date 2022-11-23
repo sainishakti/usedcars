@@ -112,13 +112,31 @@ module.exports.updateBlog = async (req, res) => {
     module.exports.listComment = async (req, res) => {
       try{
       const data = await blogComment.find()
+      const totalComment = await blogComment.count()
+      console.log("total",totalComment);
       if(data){
-      res.send({ "status": "201","success":true, "message": "Get List  Comment Successfully",data })
+      res.send({ "status": "201","success":true, "message": "Get List  Comment Successfully",data,totalComment })
       }else{
         res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
       }
       }catch(error){
         res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
         console.log("error",error);
+    }
+    }
+    //deleteComment..............................................................
+    module.exports.deleteComment = async(req, res) => {
+      const _id = req.body._id;
+      console.log(_id);
+      try{
+      const data = await blogComment.findByIdAndDelete({_id:_id})
+      if(data){
+      res.send({ "status": "201","success":true, "message": "delete comment Successfully",data })
+      }else{
+        res.status(401).send({"status": "401","success":false, "message": "Unable To Delete" })
+      }
+      }catch(error){
+        res.status(401).send({"status": "401","success":false, "message":  "Something Went Wrong" })
+        console.log("errorr",error);
     }
     }
