@@ -18,6 +18,8 @@ module.exports =app=>{
     router.get("/getJobs",jobsController.getJobs);
     router.get("/getListJobs",jobsController.listJobs);
     router.post("/jobApply",applyController.apply);
+    router.get("/jobApplyList",applyController.listJobsApply);
+    router.get("/jobApplyDetails",applyController.getJobsApply);
   
     app.use('/',router)
 }

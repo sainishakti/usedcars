@@ -20,5 +20,34 @@ module.exports.apply = async (req, res) => {
             console.log(error)
             res.status(401).send({ "status": "401","success":false, "message": "Unable to Apply" })
           }
-        
-    }
+        }
+
+        //jobAppyGet
+  module.exports.listJobsApply= async (req, res) => {
+   try{
+          const data = await applyModel.find()
+          if(data){
+          res.send({ "status": "201","success":true, "message": "Get List  JobsApply Successfully",data })
+          }else{
+            res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
+          }
+          }catch(error){
+            res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+            console.log("error",error);
+      }
+        }
+//getapply,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+module.exports.getJobsApply= async (req, res) => {
+  try{
+         const{_id} = req.query;
+         const data = await applyModel.find({_id:_id})
+         if(data){
+         res.send({ "status": "201","success":true, "message": "Get List  JobsApply Successfully",data })
+         }else{
+           res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
+         }
+         }catch(error){
+           res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+           console.log("error",error);
+     }
+       }

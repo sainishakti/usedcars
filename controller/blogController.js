@@ -129,7 +129,8 @@ module.exports.updateBlog = async (req, res) => {
       const _id = req.body._id;
       console.log(_id);
       try{
-      const data = await blogComment.findByIdAndDelete({_id:_id})
+      const data = await blogComment.findOneAndDelete({_id:_id})
+      console.log("data",data);
       if(data){
       res.send({ "status": "201","success":true, "message": "delete comment Successfully",data })
       }else{
