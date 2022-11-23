@@ -20,6 +20,7 @@ module.exports =app=>{
     router.post("/jobApply",applyController.apply);
     router.get("/jobApplyList",applyController.listJobsApply);
     router.get("/jobApplyDetails",applyController.getJobsApply);
+    router.post("/jobApplyDelete",applyController.deleteJobsApply);
   
     app.use('/',router)
 }
