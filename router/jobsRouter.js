@@ -21,6 +21,8 @@ module.exports =app=>{
     router.get("/jobApplyList",applyController.listJobsApply);
     router.get("/jobApplyDetails",applyController.getJobsApply);
     router.post("/jobApplyDelete",applyController.deleteJobsApply);
+    router.get("/jobTotal",jobsController.totalJobs);
+  
   
     app.use('/',router)
 }
