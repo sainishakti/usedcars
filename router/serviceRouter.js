@@ -16,6 +16,7 @@ module.exports =app=>{
     router.get("/listservices",serviceController.listServices);
     router.get("/detailServices",serviceController.detailsServices);
     router.post("/deleteServices",serviceController.deleteServices);
+    router.get("/totalServices",serviceController.totalService);
    
   
   
