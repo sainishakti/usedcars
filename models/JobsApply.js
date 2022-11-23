@@ -7,11 +7,10 @@ const jobsSchema = new mongoose.Schema({
   email: { type: String},
   levelOfeducation: { type: String},
   experience: { type: String},
-  programs: { type: String},
+  skill: { type: String},
   exceptedsalary: { type: String},
   information: { type: String},
-
-  },
+},
 {
   timestamps:true
 },

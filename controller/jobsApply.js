@@ -1,7 +1,7 @@
 const applyModel =require("../models/JobsApply.js")
 //Create Jobs
 module.exports.apply = async (req, res) => {
-    const { jobsId,email ,name ,levelOfeducation , experience , programs , exceptedsalary,information } = req.body
+    const { jobsId,email ,name ,levelOfeducation , experience , skill , exceptedsalary,information } = req.body
 
     try {
     const data = new applyModel({
@@ -10,7 +10,7 @@ module.exports.apply = async (req, res) => {
         email:email,
         levelOfeducation:levelOfeducation,
         experience:experience,
-        programs : programs,
+        skill : skill,
         exceptedsalary:exceptedsalary,
         information:information
          })
