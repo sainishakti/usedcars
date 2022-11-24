@@ -76,22 +76,13 @@ module.exports.addContact = async (req, res) => {
       console.log("error",error);
 }
   }
-  //reply.............................
-  // module.exports.addReply = async (req, res) => {
-  //   const { userId,replyMessage} = req.body
-
-  //  try {
-  //   const data = new replyModel({
-  //     userId: userId,
-  //     replyMessage:replyMessage,
-  //           })
-  //           await data.save()
-  //     if(data){
-  //       res.send({ "status": "201","success":true, "message": "Add Reply Successfully",data })
-  //     }
-  //   }catch(error){
-  //     res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
-  //     console.log("error",error);
-        
-  //  }
-  //   }
+  //totaluser............................................................
+module.exports.totalUser = async (req, res) => {
+  try{
+    const totaluser = await contactModel.count()
+    res.status(401).send({"status": "201","success":true, "message": "Get Total User",totaluser })
+    }catch(error){
+      res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+      console.log("error",error);
+  }
+   }
