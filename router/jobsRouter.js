@@ -22,6 +22,7 @@ module.exports =app=>{
     router.get("/jobApplyDetails",applyController.getJobsApply);
     router.post("/jobApplyDelete",applyController.deleteJobsApply);
     router.get("/jobTotal",jobsController.totalJobs);
+    router.post("/sendReply",applyController.sendReplyEmail);
   
   
     app.use('/',router)

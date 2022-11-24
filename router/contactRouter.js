@@ -29,6 +29,8 @@ module.exports =app=>{
     router.post("/deleteContact",contactController.deleteform);
     router.get("/listContact",contactController.listForm);
     router.get("/totalUser",contactController.totalUser);
-  
-    app.use('/',router)
+    router.post("/sendfReplycontact",contactController.sendReplyEmail);
+    
+    
+  app.use('/',router)
 }
