@@ -89,17 +89,18 @@ console.log(otp);
     const user = await adminModel.findOne({ email: email })
     if (user) {
    const data = await adminModel.findOneAndUpdate({email},{ otp:otp})
-      const transporter = nodemailer.createTransport(smtpTransport({
-        host: "smtp-mail.outlook.com", 
-        secureConnection: false, 
-        port: 587,
+      const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com", 
+        secure: false, 
+        port: 587, 
+        requireTLS:true, 
         auth: {
-            user: "sainishakti2525@outlook.com",
+            user: "shakti.ingenioushitech@gmail.com",
             pass: "saini@2525"
         }
-    }));
+    });
     var mailOptions = {
-      from:  "sainishakti2525@outlook.com", 
+      from:  "shakti.ingenioushitech@gmail.com", 
       to: email, 
       subject: 'Sending Otp Your Mail',
       text: ""+otp, 
