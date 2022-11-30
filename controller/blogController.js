@@ -145,7 +145,7 @@ module.exports.updateBlog = async (req, res) => {
     module.exports.totalBlog = async (req, res) => {
       try{
         const totalblog = await blogModel.count()
-        res.status(401).send({"status": "201","success":true, "message": "Get Total Blog",totalblog })
+        res.status(201).send({"status": "201","success":true, "message": "Get Total Blog",totalblog })
         }catch(error){
           res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
           console.log("error",error);
