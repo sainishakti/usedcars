@@ -99,7 +99,7 @@ module.exports.createJobs = async (req, res) => {
  module.exports.totalJobs = async (req, res) => {
 try{
   const totalJobs = await jobsModel.count()
-  res.status(401).send({"status": "201","success":true, "message": "Get Total jobs",totalJobs })
+  res.status(201).send({"status": "201","success":true, "message": "Get Total jobs",totalJobs })
   }catch(error){
     res.status(201).send({"status": "401","success":false, "message":  "Something went Wrong" })
     console.log("error",error);
