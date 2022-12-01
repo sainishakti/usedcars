@@ -80,7 +80,7 @@ module.exports.addContact = async (req, res) => {
 module.exports.totalUser = async (req, res) => {
   try{
     const totaluser = await contactModel.count()
-    res.status(401).send({"status": "201","success":true, "message": "Get Total User",totaluser })
+    res.status(201).send({"status": "201","success":true, "message": "Get Total User",totaluser })
     }catch(error){
       res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
       console.log("error",error);
