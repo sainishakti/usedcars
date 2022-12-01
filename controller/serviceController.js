@@ -88,7 +88,7 @@ module.exports.deleteServices = async (req, res) => {
 module.exports.totalService = async (req, res) => {
   try{
     const totalservice = await servicesModel.count()
-    res.status(401).send({"status": "201","success":true, "message": "Get Total Service",totalservice })
+    res.status(201).send({"status": "201","success":true, "message": "Get Total Service",totalservice })
     }catch(error){
       res.status(201).send({"status": "401","success":false, "message":  "Something went Wrong" })
       console.log("error",error);
