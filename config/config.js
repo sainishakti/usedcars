@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const url =process.env.STAGING_URL
-mongoose.connect(url,{
+mongoose.connect("mongodb+srv://root:root@cluster0.dobxomi.mongodb.net/carsUsed",{
     useNewUrlParser: true,
     useUnifiedTopology: true
 
