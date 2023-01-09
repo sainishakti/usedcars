@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // Load Routes
 require("./router/userRouter.js")(app)
+require("./router/sellRouter.js")(app)
 
 
 app.listen(port, () => {

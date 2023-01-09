@@ -63,3 +63,19 @@ module.exports.userRegister = async (req, res) => {
      res.status(401).send({"status": "401","success":false, "message": "Unable to Login" })
     }
   }
+//changePassword..................................
+module.exports.changeUserPassword = async (req, res) => {
+  const { password, password_confirmation } = req.body
+  if (password && password_confirmation) {
+    if (password !== password_confirmation) {
+      res.status(401).send({"status": "401","success":false, "message":  "New Password and Confirm New Password doesn't match" })
+    } else {
+      const salt = await bcrypt.genSalt(10)
+      const newHashPassword = await bcrypt.hash(password, salt)
+      await UserModel.findByIdAndUpdate(req.users._id, { $set: { password: newHashPassword } })
+      res.send({ "status": "201","success":true, "message": "Password changed succesfully" })
+    }
+  } else {
+    res.status(401).send({"status": "401","success":false, "message":  "All Fields are Required" })
+  }
+}
