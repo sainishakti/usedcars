@@ -5,7 +5,6 @@ const dotenv = require('dotenv')
 dotenv.config()
 const app = express()
 const port = process.env.PORT
-//const port =3000;
 // CORS Policy
 app.use(cors())
 
@@ -18,18 +17,7 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // Load Routes
-require("./router/authRouter.js")(app)
-require("./router/jobsRouter.js")(app)
-require("./router/serviceRouter.js")(app)
-require("./router/contactRouter.js")(app)
-require("./router/blogRouter.js")(app)
-require("./router/privacyRouter.js")(app)
-require("./router/termRouter.js")(app)
-require("./router/contactUsRouterModel.js")(app)
-require("./router/videoRouter.js")(app)
-require("./router/aboutrouter.js")(app)
-require("./router/testRouter.js")(app)
-require("./router/faqRouter.js")(app)
+require("./router/userRouter.js")(app)
 
 
 app.listen(port, () => {

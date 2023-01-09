@@ -3,8 +3,10 @@ const mongoose = require("mongoose");
 // Defining Schema
 const aboutSchema = new mongoose.Schema({
   name: { type: String},
-  skill: { type: String},
-  image: { type: String},
+  email: { type: String},
+  mobile: { type: String},
+  password: { type: String},
+  
   },
 {
   timestamps:true
