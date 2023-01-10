@@ -1,7 +1,7 @@
 module.exports =app=>{
     const router = require("express").Router()
     const multer = require('multer')
-    const sellController = require("../controllers/carController.js")
+    const blogController = require("../controllers/blogController.js")
     var storage = multer.diskStorage({
         destination: function (req, file, cb) {
           cb(null, './uploads')
@@ -12,10 +12,10 @@ module.exports =app=>{
     })
     var upload = multer({ storage: storage })
    
-  
-
-  router.post("/SellCar",upload.single('file'),sellController.sellCar)
-  router.get("/SellDetails",sellController.getSellDetails)
+router.post("/AddBlog",upload.single('file'),blogController.blogAdd)
+router.get("/BlogDetails",blogController.getBlogDetails)
+router.post("/BlogDelete",blogController.blogDelete)
+router.post("/BlogUpdate",upload.single('file'),blogController.blogUpdate)
   
 
     app.use('/',router)

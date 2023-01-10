@@ -24,6 +24,20 @@ module.exports.sellCar = async (req, res) => {
             res.status(401).send({ "status": 401,"success":false, "message": "Unable to Add" })
           }
         } 
-      
+  //detailsSell......................
+  module.exports.getSellDetails = async (req, res) => {
+    const _id = req.query;
+    try{
+      const data = await carModel.findOne({_id})
+    if(data){
+    res.send({ "status": "201","success":true, "message": "get SellDetails  Successfully",data })
+    }else{
+      res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
+    }
+    }catch(error){
+      res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+      console.log("error",error);
+}
+  }
     
   
