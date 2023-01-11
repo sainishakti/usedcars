@@ -5,7 +5,7 @@ module.exports =app=>{
   
 
   router.post("/AddCity",cityController.cityAdd)
-  router.post("/ListCity",cityController.cityList)
+  router.get("/ListCity",cityController.cityList)
 
 
     app.use('/',router)

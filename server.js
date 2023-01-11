@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 require("./router/userRouter.js")(app)
 require("./router/carRouter.js")(app)
 require("./router/blogRouter.js")(app)
+require("./router/cityRouter.js")(app)
 
 
 app.listen(port, () => {
