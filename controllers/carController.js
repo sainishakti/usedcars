@@ -1,4 +1,5 @@
 const  carModel =require("../models/carModel.js")
+const  carBuyModel =require("../models/buyModel")
 
 
 //sellcar..........................................................................
@@ -40,4 +41,24 @@ module.exports.sellCar = async (req, res) => {
 }
   }
     
-  
+//buyCar.............................
+module.exports.buyCar = async (req, res) => {
+  const { minPrice,maxPrice, selectCity, chooseFeatures,model,kmDriven,Owner,fuelType} = req.body
+        try {
+          const data = new carBuyModel({
+              minPrice: minPrice,
+              maxPrice : maxPrice,
+              selectCity:selectCity,
+              chooseFeatures:chooseFeatures,
+              model:model,
+              Owner:Owner,
+              kmDriven:kmDriven,
+              fuelType:fuelType
+})
+          await data.save()
+          res.status(201).send({ "status":200, "success":true, "message": "Buy Car Successfully",data })
+        } catch (error) {
+          console.log(error)
+          res.status(401).send({ "status": 401,"success":false, "message": "Unable to Buy" })
+        }
+      } 

@@ -11,12 +11,13 @@ module.exports =app=>{
         }
     })
     var upload = multer({ storage: storage })
-   
-  
-
+  //sellCar.................................................................
   router.post("/SellCar",upload.single('file'),sellController.sellCar)
   router.get("/SellDetails",sellController.getSellDetails)
   
+
+  //BuyCar.........................................................................
+  router.post("/BuyCar",sellController.buyCar)
 
     app.use('/',router)
 }
