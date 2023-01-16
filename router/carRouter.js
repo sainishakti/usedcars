@@ -18,6 +18,8 @@ module.exports =app=>{
 
   //BuyCar.........................................................................
   router.post("/BuyCar",sellController.buyCar)
+  //sellCity.......................................................................
+  router.post("/CityCars",sellController.citySell)
 
     app.use('/',router)
 }
