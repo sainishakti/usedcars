@@ -96,7 +96,7 @@ module.exports.citySell = async (req, res) => {
 }
 }
 //BookCar...........................................................................
-module.exports.buyCar = async (req, res) => {
+module.exports.bookCar = async (req, res) => {
   const { name,phoneNumber,address,pinCode,city} = req.body
         try {
           const data = new carBookModel({
