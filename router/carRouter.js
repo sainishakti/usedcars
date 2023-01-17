@@ -22,5 +22,9 @@ module.exports =app=>{
   router.post("/CityCars",sellController.citySell)
   //BookCarInfo......................................................................
   router.post("/BookCar",sellController.bookCar)
+  router.post("/SellCar",upload.single('file'),sellController.sellCar)
+  router.get("/SellList",sellController.getSellList)
+  router.post("/SellFilter",sellController.getSellFilter)
+ 
     app.use('/',router)
 }

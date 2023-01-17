@@ -113,3 +113,34 @@ module.exports.bookCar = async (req, res) => {
           res.status(401).send({ "status": 401,"success":false, "message": "Unable to Add" })
         }
       } 
+      //SellCarList.............................................................
+      module.exports.getSellList = async (req, res) => {
+        try{
+          const data = await carModel.find()
+        if(data){
+        res.send({ "status": "201","success":true, "message": "get Sell List  Successfully",data })
+        }else{
+          res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
+        }
+        }catch(error){
+          res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+          console.log("error",error);
+    }
+      }
+    //sellCarFilter................................................
+
+    module.exports.getSellFilter = async (req, res) => {
+      try{
+        const data = await carModel.find({$and:[{model:"model"},{Owner:"Owner"}]})
+        console.log("..............",data);
+      if(data){
+      res.send({ "status": "201","success":true, "message": "get Sell Filter  Successfully",data })
+      }else{
+        res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
+      }
+      }catch(error){
+        res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+        console.log("error",error);
+  }
+    }
+        
