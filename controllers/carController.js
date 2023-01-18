@@ -19,8 +19,12 @@ module.exports.sellCar = async (req, res) => {
                 fuelType:fuelType
                 })
             await data.save()
+            console.log("1");
             res.status(201).send({ "status":200, "success":true, "message": "Add Car Successfully",data })
           }else{
+            console.log("2",req.files);
+            const dataImage = req.files
+            const image = dataImage.map((item)=>item.filename)
             var data = new carModel({
               brand: brand,
               AddPrice : AddPrice,
@@ -28,7 +32,7 @@ module.exports.sellCar = async (req, res) => {
               year:year,
               model:model,
               varient:varient,
-              AddvehicleImages:"https://usedcars.onrender.com/uploads/"+req.file.filename,
+              AddvehicleImages:image,
               Owner:Owner,
               kmDriven:kmDriven,
               fuelType:fuelType
@@ -128,15 +132,31 @@ module.exports.bookCar = async (req, res) => {
     }
       }
     //sellCarFilter................................................
-
+//const data = await carBuyModel.find({$and:[{model:"model"},{Owner:"Owner"},{city:"city"},{price:"50"},{kmDriven:"50"}]})
     module.exports.getSellFilter = async (req, res) => {
       try{
-        const data = await carModel.find({$and:[{model:"model"},{Owner:"Owner"}]})
-        console.log("..............",data);
-      if(data){
-      res.send({ "status": "201","success":true, "message": "get Sell Filter  Successfully",data })
-      }else{
+         const{model,Owner,city,minPrice,maxPrice,kmDriven,fuelType} = req.body
+       // if(minPrice != null && maxPrice != undefined && model != null && Owner != undefined && city != undefined && kmDriven != undefined && fuelType != undefined){
+          var data = await carModel.find({$in:[{model:model},{Owner:Owner},{city:city},[ { $gt: [ "$AddPrice", minPrice ] }, { $lt: [ "$AddPrice", maxPrice ] } ] ,{kmDriven:kmDriven},{fuelType:fuelType}]})
+         if(data){
+          res.send({ "status": "201","success":true, "message": "get Sell Filter  Successfully",data })
+         }    
+      else{
         res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
+      }
+      }catch(error){
+        res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+        console.log("error",error);
+  }
+    }
+    //delete..........................................................
+    module.exports.deleteSell = async (req, res) => {
+      try{
+        const data = await carModel.findOneAndDelete({_id:req.body_id})
+      if(data){
+      res.send({ "status": "201","success":true, "message": "Delete Sell Car Successfully",data })
+      }else{
+        res.status(401).send({"status": "401","success":false, "message": "Unable To Delete" })
       }
       }catch(error){
         res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })

@@ -12,7 +12,7 @@ module.exports =app=>{
     })
     var upload = multer({ storage: storage })
   //sellCar.................................................................
-  router.post("/SellCar",upload.single('file'),sellController.sellCar)
+  router.post("/SellCar",upload.array('file',8),sellController.sellCar)
   router.get("/SellDetails",sellController.getSellDetails)
   
 
@@ -25,6 +25,7 @@ module.exports =app=>{
   router.post("/SellCar",upload.single('file'),sellController.sellCar)
   router.get("/SellList",sellController.getSellList)
   router.post("/SellFilter",sellController.getSellFilter)
+  router.post("/SellDelete",sellController.deleteSell)
  
     app.use('/',router)
 }
