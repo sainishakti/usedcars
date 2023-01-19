@@ -120,8 +120,7 @@ module.exports.bookCar = async (req, res) => {
       //SellCarList.............................................................
       module.exports.getSellList = async (req, res) => {
         try{
-          const _id = req.body._id
-          const data = await carModel.find({_id:_id})
+          const data = await carModel.find()
         if(data){
         res.send({ "status": "201","success":true, "message": "get Sell List  Successfully",data })
         }else{

@@ -23,7 +23,8 @@ module.exports =app=>{
   //BookCarInfo......................................................................
   router.post("/BookCar",sellController.bookCar)
   router.post("/SellCar",upload.single('file'),sellController.sellCar)
-  router.get("/SellGet",sellController.getSellList)
+  router.get("/SellList",sellController.getSellList)
+  router.get("/SellGet",sellController.getSellDetails)
   router.post("/SellFilter",sellController.getSellFilter)
   router.post("/SellDelete",sellController.deleteSell)
  
