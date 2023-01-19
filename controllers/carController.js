@@ -151,8 +151,9 @@ module.exports.bookCar = async (req, res) => {
     }
     //delete..........................................................
     module.exports.deleteSell = async (req, res) => {
+      const _id  = req.body._id
       try{
-        const data = await carModel.findOneAndDelete({_id:req.body_id})
+        const data = await carModel.findOneAndDelete({_id:_id})
       if(data){
       res.send({ "status": "201","success":true, "message": "Delete Sell Car Successfully",data })
       }else{
