@@ -1,5 +1,6 @@
 const  adminModel =require("../models/adminModel.js")
 const  jwt =require("jsonwebtoken")
+const  bcrypt =require("bcrypt")
 const  sellModel =require("../models/carModel.js")
 const  userModel =require("../models/userModel.js")
 const  BlogModel =require("../models/BlogModel.js")
