@@ -1,5 +1,5 @@
 const  jwt =require('jsonwebtoken')
- const userModel = require('../models/userModel.js')
+ const adminModel = require('../models/adminModel.js')
 
 module.exports.checkUserAuth = async (req, res, next) => {
   let token
@@ -13,7 +13,7 @@ module.exports.checkUserAuth = async (req, res, next) => {
       const { userID } = jwt.verify(token, process.env.JWT_SECRET_KEY)
 
       // Get User from Token
-      req.users = await userModel.findById(userID).select('-password')
+      req.users = await adminModel.findById(userID).select('-password')
       console.log("user",req.users);
       next()
     } catch (error) {

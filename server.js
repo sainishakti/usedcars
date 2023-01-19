@@ -21,6 +21,7 @@ require("./router/userRouter.js")(app)
 require("./router/carRouter.js")(app)
 require("./router/blogRouter.js")(app)
 require("./router/cityRouter.js")(app)
+require("./router/adminRouter.js")(app)
 
 
 app.listen(port, () => {
