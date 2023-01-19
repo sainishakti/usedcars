@@ -6,13 +6,17 @@ module.exports =app=>{
    
   
   router.post("/Login",admincontroller.adminLogin)
-  router.post("/sellList",admincontroller.getSellList)
+  router.get("/sellList",admincontroller.getSellList)
   router.post("/sellDelete",admincontroller.deleteSell)
-  router.post("/UserList",admincontroller.getUserList)
+  router.get("/UserList",admincontroller.getUserList)
   router.post("/UserDelete",admincontroller.deleteUser)
-  router.post("/BlogList",admincontroller.getBlogList)
+  router.get("/BlogList",admincontroller.getBlogList)
   router.use('/Changepasswords', checkUserAuth)
   router.post("/Changepasswords",admincontroller.changeAdminPassword)
+  router.get("/BuyList",admincontroller.getBuyList)
+  router.post("/BuyDelete",admincontroller.deleteBuy)
+
+ 
 
 
     app.use('/Admin',router)
