@@ -6,6 +6,8 @@ const  userModel =require("../models/userModel.js")
 const  BlogModel =require("../models/BlogModel.js")
 const  BuyModel =require("../models/buyModel.js")
 const buyModel = require("../models/buyModel.js")
+const  carBookModel =require("../models/bookCarModel")
+const bookCarModel = require("../models/bookCarModel")
 
 
 
@@ -133,7 +135,7 @@ if(isMatch){
   //BuyRequestList..................................................................
   module.exports.getBuyList = async (req, res) => {
     try{
-      const data = await BuyModel.find()
+      const data = await bookCarModel.find()
     if(data){
     res.send({ "status": "201","success":true, "message": "get BuyRequest List  Successfully",data })
     }else{
@@ -148,7 +150,7 @@ if(isMatch){
   module.exports.deleteBuy = async (req, res) => {
     const _id  = req.body._id
     try{
-      const data = await buyModel.findOneAndDelete({_id:_id})
+      const data = await bookCarModel.findOneAndDelete({_id:_id})
     if(data){
     res.send({ "status": "201","success":true, "message": "Delete BuyRequest Successfully",data })
     }else{
