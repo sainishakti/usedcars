@@ -32,7 +32,7 @@ module.exports.sellCar = async (req, res) => {
               year:year,
               model:model,
               varient:varient,
-              AddvehicleImages:image,
+              AddvehicleImages:req.files,
               Owner:Owner,
               kmDriven:kmDriven,
               fuelType:fuelType
@@ -121,8 +121,9 @@ module.exports.bookCar = async (req, res) => {
       module.exports.getSellList = async (req, res) => {
         try{
           const data = await carModel.find()
+          const total = await carModel.count()
         if(data){
-        res.send({ "status": "201","success":true, "message": "get Sell List  Successfully",data })
+        res.send({ "status": "201","success":true, "message": "get Sell List  Successfully",data,total })
         }else{
           res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
         }
