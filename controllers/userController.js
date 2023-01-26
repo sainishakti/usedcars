@@ -112,3 +112,17 @@ module.exports.changeUserPassword = async (req, res) => {
       console.log("error",error);
 }
   }
+  //userlist...................................................................
+  module.exports.userlist = async (req, res) => {
+  try{
+      const data = await UserModel.find()
+    if(data){
+    res.send({ "status": "201","success":true, "message": "Get User Successfully",data })
+    }else{
+      res.status(401).send({"status": "401","success":false, "message": "Unable To get" })
+    }
+    }catch(error){
+      res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+      console.log("error",error);
+}
+  }

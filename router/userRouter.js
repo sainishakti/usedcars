@@ -10,6 +10,7 @@ module.exports =app=>{
   router.post("/ChangePassword",checkUserAuth,usercontroller.changeUserPassword)
   router.get("/userSellList",usercontroller.userSell)
   router.post("/userSellDelete",usercontroller.userSellDelete)
+  router.get("/userList",usercontroller.userlist)
 
     app.use('/user',router)
 }
