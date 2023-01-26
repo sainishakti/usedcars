@@ -1,5 +1,6 @@
 const  UserModel =require("../models/userModel.js")
 const  UserSell =require("../models/carModel.js")
+const  Userbuyer =require("../models/buyModel.js")
 const  bcrypt =require("bcrypt")
 const  jwt =require("jsonwebtoken")
 
@@ -118,6 +119,22 @@ module.exports.changeUserPassword = async (req, res) => {
       const data = await UserModel.find()
     if(data){
     res.send({ "status": "201","success":true, "message": "Get User Successfully",data })
+    }else{
+      res.status(401).send({"status": "401","success":false, "message": "Unable To get" })
+    }
+    }catch(error){
+      res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+      console.log("error",error);
+}
+  }
+  //buyerList......................................................
+  module.exports.userbuyer = async (req, res) => {
+    const {_id } = req.query;
+    console.log(_id);
+    try{
+      const data = await Userbuyer.find({userId:_id})
+    if(data){
+    res.send({ "status": "201","success":true, "message": "Get Buyer Car Successfully",data })
     }else{
       res.status(401).send({"status": "401","success":false, "message": "Unable To get" })
     }

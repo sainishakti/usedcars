@@ -64,9 +64,10 @@ module.exports.sellCar = async (req, res) => {
     
 //buyCar.............................
 module.exports.buyCar = async (req, res) => {
-  const { minPrice,maxPrice, selectCity, chooseFeatures,model,kmDriven,Owner,fuelType} = req.body
+  const { minPrice,maxPrice, selectCity, chooseFeatures,model,kmDriven,Owner,fuelType,userId} = req.body
         try {
           const data = new carBuyModel({
+            userId:userId,
               minPrice: minPrice,
               maxPrice : maxPrice,
               selectCity:selectCity,

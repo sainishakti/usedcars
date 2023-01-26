@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 // Defining Schema
 const buySchema = new mongoose.Schema({
+  userId: { type: String},
   minPrice: { type: String},
   maxPrice: { type: String},
   selectCity: { type: String},

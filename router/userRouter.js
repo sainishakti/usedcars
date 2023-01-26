@@ -11,6 +11,7 @@ module.exports =app=>{
   router.get("/userSellList",usercontroller.userSell)
   router.post("/userSellDelete",usercontroller.userSellDelete)
   router.get("/userList",usercontroller.userlist)
+  router.get("/userListBuyer",usercontroller.userbuyer)
 
     app.use('/user',router)
 }
