@@ -4,10 +4,11 @@ const  carBookModel =require("../models/bookCarModel")
 
 //sellcar..........................................................................
 module.exports.sellCar = async (req, res) => {
-    const { brand,AddPrice,city,year,model,varient,kmDriven,Owner,fuelType} = req.body
+    const { brand,AddPrice,city,year,model,varient,kmDriven,Owner,fuelType,userId} = req.body
          try {
-            if(req.files == undefined){
+            if(req.file == undefined){
               var data = new carModel({
+                userId:userId,
                 brand: brand,
                 AddPrice : AddPrice,
                 city:city,
@@ -22,10 +23,8 @@ module.exports.sellCar = async (req, res) => {
             console.log("1");
             res.status(201).send({ "status":200, "success":true, "message": "Add Car Successfully",data })
           }else{
-            console.log("2",req.files);
-            const dataImage = req.files
-            const image = dataImage.map((item)=>item.filename)
             var data = new carModel({
+              userId:userId,
               brand: brand,
               AddPrice : AddPrice,
               city:city,

@@ -1,4 +1,5 @@
 const  UserModel =require("../models/userModel.js")
+const  UserSell =require("../models/carModel.js")
 const  bcrypt =require("bcrypt")
 const  jwt =require("jsonwebtoken")
 
@@ -79,3 +80,35 @@ module.exports.changeUserPassword = async (req, res) => {
     res.status(401).send({"status": "401","success":false, "message":  "All Fields are Required" })
   }
 }
+   //userSell..........................................................
+   module.exports.userSell = async (req, res) => {
+    const {_id } = req.query;
+    console.log(_id);
+    try{
+      const data = await UserSell.find({userId:_id})
+    if(data){
+    res.send({ "status": "201","success":true, "message": "Get Sell Car Successfully",data })
+    }else{
+      res.status(401).send({"status": "401","success":false, "message": "Unable To get" })
+    }
+    }catch(error){
+      res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+      console.log("error",error);
+}
+  }
+  //sellDelete.......................................................
+  module.exports.userSellDelete = async (req, res) => {
+    const {_id } = req.body;
+    console.log(_id);
+    try{
+      const data = await UserSell.findOneAndDelete({_id:_id})
+    if(data){
+    res.send({ "status": "201","success":true, "message": "Delete Sell Car Successfully",data })
+    }else{
+      res.status(401).send({"status": "401","success":false, "message": "Unable To Delete" })
+    }
+    }catch(error){
+      res.status(401).send({"status": "401","success":false, "message":  "Something went Wrong" })
+      console.log("error",error);
+}
+  }
