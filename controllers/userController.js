@@ -83,10 +83,10 @@ module.exports.changeUserPassword = async (req, res) => {
 }
    //userSell..........................................................
    module.exports.userSell = async (req, res) => {
-    const {_id } = req.query;
-    console.log(_id);
+    const {userId } = req.query;
+    console.log(userId);
     try{
-      const data = await UserSell.find({userId:_id})
+      const data = await UserSell.find({userId:userId})
     if(data){
     res.send({ "status": "201","success":true, "message": "Get Sell Car Successfully",data })
     }else{
@@ -129,10 +129,10 @@ module.exports.changeUserPassword = async (req, res) => {
   }
   //buyerList......................................................
   module.exports.userbuyer = async (req, res) => {
-    const {_id } = req.query;
+    const {userId } = req.query;
     console.log(_id);
     try{
-      const data = await Userbuyer.find({userId:_id})
+      const data = await Userbuyer.find({userId:userId})
     if(data){
     res.send({ "status": "201","success":true, "message": "Get Buyer Car Successfully",data })
     }else{
