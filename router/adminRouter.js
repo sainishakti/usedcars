@@ -17,6 +17,9 @@ module.exports =app=>{
   router.post("/BuyDelete",admincontroller.deleteBuy)
 
  
+ 
+
+ 
 
 
     app.use('/Admin',router)
