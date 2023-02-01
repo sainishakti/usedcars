@@ -116,7 +116,8 @@ module.exports.changeUserPassword = async (req, res) => {
   //userlist...................................................................
   module.exports.userlist = async (req, res) => {
   try{
-      const data = await UserModel.find()
+       const {userId } = req.query;
+      const data = await UserModel.findOne({_id:userId})
     if(data){
     res.send({ "status": "201","success":true, "message": "Get User Successfully",data })
     }else{
