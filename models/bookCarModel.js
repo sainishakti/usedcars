@@ -7,6 +7,7 @@ const bookCarSchema = new mongoose.Schema({
   address: { type: String},
   pinCode: { type: String}, 
   city: { type: String},
+  userId: { type: String},
  
  
   

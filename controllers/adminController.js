@@ -20,9 +20,10 @@ const bookCarModel = require("../models/bookCarModel")
         if (user != null) {
           const isMatch = await bcrypt.compare(password, user.password)
           if ((user.email === email) && isMatch) {
+            
             // Generate JWT Token
             const token = jwt.sign({ userID: user._id }, process.env.JWT_SECRET_KEY, { expiresIn: '5d' })
-            res.send({ "status": 201,"success":true, "message": "Login Success", "token": token })
+            res.send({ "status": 201,"success":true, "message": "Login Success", "token": token ,user })
           } else {
             res.status(401).send({"status": 401,"success":false, "message":  "Email or Password is not Valid" })
           }

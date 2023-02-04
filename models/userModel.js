@@ -6,6 +6,7 @@ const aboutSchema = new mongoose.Schema({
   email: { type: String},
   mobile: { type: String},
   password: { type: String},
+  otp: { type: String},
   
   },
 {
