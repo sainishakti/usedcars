@@ -15,6 +15,7 @@ module.exports =app=>{
   router.post("/Changepasswords",admincontroller.changeAdminPassword)
   router.get("/BuyList",admincontroller.getBuyList)
   router.post("/BuyDelete",admincontroller.deleteBuy)
+  router.post("/updateRequest",admincontroller.requestUpdate)
 
  
  

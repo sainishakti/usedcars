@@ -7,7 +7,7 @@ const aboutSchema = new mongoose.Schema({
   mobile: { type: String},
   password: { type: String},
   otp: { type: String},
-  
+  //  jobsId:{ type: mongoose.Schema.Types.ObjectId, ref: 'job' },
   },
 {
   timestamps:true

@@ -101,7 +101,7 @@ module.exports.citySell = async (req, res) => {
 }
 //BookCar...........................................................................
 module.exports.bookCar = async (req, res) => {
-  const { name,phoneNumber,address,pinCode,city,userId} = req.body
+  const { name,phoneNumber,address,pinCode,city,carId} = req.body
         try {
           const data = new carBookModel({
             name: name,
@@ -109,7 +109,7 @@ module.exports.bookCar = async (req, res) => {
             address:address,
             pinCode:pinCode,
             city:city,
-            userId:userId
+            carId:carId
 })
           await data.save()
           res.status(201).send({ "status":200, "success":true, "message": "Added Information Successfully",data })

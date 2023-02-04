@@ -7,11 +7,11 @@ const bookCarSchema = new mongoose.Schema({
   address: { type: String},
   pinCode: { type: String}, 
   city: { type: String},
-  userId: { type: String},
+  carId: { type: mongoose.Schema.Types.ObjectId, ref: 'sellcar' },
+  request: { type: String,enum:['CANCEL',"APPROVE","PENDING"],default:"PENDING"},
  
  
-  
-  },
+ },
 {
   timestamps:true
 },

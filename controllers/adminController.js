@@ -136,9 +136,25 @@ if(isMatch){
   //BuyRequestList..................................................................
   module.exports.getBuyList = async (req, res) => {
     try{
-      const data = await bookCarModel.find()
+      // const data = await bookCarModel.find()
+      // const carId = data[0].carId
+      // console.log("carId",carId);
+      // const datas = await sellModel.find({carId:carId})
+      // console.log("carId",datas);
+      const data = await bookCarModel.aggregate( [
+        {
+          $lookup:
+            {
+              from: "sellcars",
+              localField: "carId",
+              foreignField: "_id",
+              as: "data"
+            }
+       }
+     ] )
+
     if(data){
-    res.send({ "status": "201","success":true, "message": "get BuyRequest List  Successfully",data })
+      res.send({ "status": "201","success":true, "message": "get BuyRequest List  Successfully",data})
     }else{
       res.status(401).send({"status": "401","success":false, "message": "Unable To Get" })
     }
@@ -162,4 +178,19 @@ if(isMatch){
       console.log("error",error);
 }
   }
-      
+//requestUpdate...............................................................................
+module.exports.requestUpdate = async (req, res) => {
+  const {request,userId} = req.body
+        try {
+         var data = await carBookModel.findOneAndUpdate({_id:userId},{
+          request:request,
+           })
+          await data.save()
+          res.status(201).send({ "status":200, "success":true, "message": "Update Request Successfully",data })
+        
+      }catch (error) {
+          console.log(error)
+          res.status(401).send({ "status": 401,"success":false, "message": "Unable to update" })
+        }
+      } 
+  
