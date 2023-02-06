@@ -136,11 +136,35 @@ module.exports.bookCar = async (req, res) => {
     //sellCarFilter................................................
 //const data = await carBuyModel.find({$and:[{model:"model"},{Owner:"Owner"},{city:"city"},{price:"50"},{kmDriven:"50"}]})
     module.exports.getSellFilter = async (req, res) => {
+  
+      const{model,Owner,city,minPrice,maxPrice,kmDriven,fuelType} = req.body
+  //     var filter =[];
+  //     if(model != null){
+  //       filter.push({model:model})
+  //     }
+  //     if(Owner != null){
+  //       filter.push({Owner:Owner})
+  //     }
+  //     if(city !=null){
+  //       filter.push({city:city})
+  //     }
+  //     if(kmDriven !=null){
+  //       filter.push({kmDriven:kmDriven})
+  //     }
+  //     if(fuelType !=null){
+  //       filter.push({fuelType:fuelType})
+  //     }
+  //  const filters = {...filter}
+  //     console.log("filter",filters);
+  //     for (var iterator in filter) {
+        
+  //     }
       try{
-         const{model,Owner,city,minPrice,maxPrice,kmDriven,fuelType} = req.body
+         
        // if(minPrice != null && maxPrice != undefined && model != null && Owner != undefined && city != undefined && kmDriven != undefined && fuelType != undefined){
-          var data = await carModel.find({$in:[{model:model},{Owner:Owner},{city:city},[ { $gt: [ "$AddPrice", minPrice ] }, { $lt: [ "$AddPrice", maxPrice ] } ] ,{kmDriven:kmDriven},{fuelType:fuelType}]})
-         if(data){
+           var data = await carModel.find({$in:[{model:model},{Owner:Owner},{city:city},[ { $gt: [ "$AddPrice", minPrice ] }, { $lt: [ "$AddPrice", maxPrice ] } ] ,{kmDriven:kmDriven},{fuelType:fuelType}]})
+         //var data = await carModel.find({$and:[{iterator}]})
+          if(data){
           res.send({ "status": "201","success":true, "message": "get Sell Filter  Successfully",data })
          }    
       else{
