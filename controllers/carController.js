@@ -31,7 +31,7 @@ module.exports.sellCar = async (req, res) => {
               year:year,
               model:model,
               varient:varient,
-              AddvehicleImages:"https://usedcars.onrender.com/uploads"+req.file.filename,
+              AddvehicleImages:"https://usedcars.onrender.com/uploads/"+req.file.filename,
               Owner:Owner,
               kmDriven:kmDriven,
               fuelType:fuelType
