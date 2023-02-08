@@ -4,9 +4,10 @@ const  carBookModel =require("../models/bookCarModel")
 
 //sellcar..........................................................................
 module.exports.sellCar = async (req, res) => {
+
     const { brand,AddPrice,city,year,model,varient,kmDriven,Owner,fuelType,userId} = req.body
-         try {
-            if(req.file == undefined){
+     try {
+            if(req.files == undefined){
               var data = new carModel({
                 userId:userId,
                 brand: brand,
@@ -23,6 +24,16 @@ module.exports.sellCar = async (req, res) => {
             console.log("1");
             res.status(201).send({ "status":200, "success":true, "message": "Add Car Successfully",data })
           }else{
+            var images = []
+            let photos = req.files
+   console.log("file",photos);
+   for (const img of photos) {
+    console.log("img",img);
+    images.push("https://usedcars.onrender.com/uploads/"+img.filename)
+   }
+   console.log("finalData",images);
+   const imgs = {...images}
+   console.log("imgs",imgs);
             var data = new carModel({
               userId:userId,
               brand: brand,
@@ -31,14 +42,16 @@ module.exports.sellCar = async (req, res) => {
               year:year,
               model:model,
               varient:varient,
-              AddvehicleImages:"https://usedcars.onrender.com/uploads/"+req.file.filename,
+              AddvehicleImages:imgs,
               Owner:Owner,
               kmDriven:kmDriven,
               fuelType:fuelType
 })
+   
           await data.save()
+}
           res.status(201).send({ "status":200, "success":true, "message": "Add Car Successfully",data })
-        } 
+        
           } 
             
             catch (error) {

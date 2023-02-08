@@ -9,7 +9,7 @@ const carSchema = new mongoose.Schema({
   year: { type: String},
   model: { type: String},
   varient: { type: String},
-  AddvehicleImages: { type: String},
+  AddvehicleImages: { type: Array},
   Owner: { type: String},
   kmDriven: { type: String},
   fuelType: { type: String},
